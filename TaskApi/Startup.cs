@@ -34,7 +34,7 @@ namespace TaskApi
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TaskApi", Version = "v1" });
             });
 
-            services.AddScoped<ITodoRepository, TodoService>(); // create new per request
+            services.AddScoped<ITodoRepository, TodoSqlServerService>(); // create new per request
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
