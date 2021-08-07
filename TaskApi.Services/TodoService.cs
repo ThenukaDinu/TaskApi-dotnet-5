@@ -6,7 +6,7 @@ using TaskApi.Modals;
 
 namespace TaskApi.Services
 {
-    public class TodoService
+    public class TodoService : ITodoRepository
     {
         public List<Todo> AllTodos()
         {
