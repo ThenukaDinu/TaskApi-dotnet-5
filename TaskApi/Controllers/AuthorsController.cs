@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TaskApi.Modals;
 using TaskApi.Services.Authors;
 using TaskApi.Services.ViewModels;
 
@@ -32,7 +33,7 @@ namespace TaskApi.Controllers
             return Ok(mappedAuthors);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetAuthor")]
         public IActionResult GetAuthor(int id)
         {
             var author = _service.GetAuthor(id);
@@ -45,6 +46,17 @@ namespace TaskApi.Controllers
             var mappedAuthor = _mapper.Map<AuthorDto>(author);
 
             return Ok(mappedAuthor);
+        }
+
+        [HttpPost]
+        public ActionResult<AuthorDto> CreateAuthor(CreateAuthorDto author)
+        {
+            var authorEntity = _mapper.Map<Author>(author);
+            var newAuthor = _service.AddAuthor(authorEntity);
+
+            var authorForReturn = _mapper.Map<AuthorDto>(newAuthor);
+
+            return CreatedAtRoute("GetAuthor", new { id = authorForReturn.Id }, authorForReturn);
         }
     }
 }

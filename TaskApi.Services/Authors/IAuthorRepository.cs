@@ -12,5 +12,6 @@ namespace TaskApi.Services.Authors
         List<Author> GetAllAuthors();
         Author GetAuthor(int id);
         List<Author> GetAllAuthors(string job, string search);
+        public Author AddAuthor(Author author);
     }
 }

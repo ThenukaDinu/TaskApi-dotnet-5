@@ -47,5 +47,13 @@ namespace TaskApi.Services.Authors
         {
             return _context.Authors.Find(id);
         }
+
+        public Author AddAuthor (Author author)
+        {
+            _context.Authors.Add(author);
+            _context.SaveChanges();
+
+            return _context.Authors.Find(author.Id);
+        }
     }
 }

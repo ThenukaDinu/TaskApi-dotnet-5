@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TaskApi.Modals;
 using TaskApi.Services.Todos;
 using TaskApi.Services.ViewModels;
 
@@ -32,7 +33,7 @@ namespace TaskApi.Controllers
             return Ok(mappedTodos);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetTodo")]
         public ActionResult<TodoDto> GetTodo (int authorId, int id)
         {
             var myTodo = _todoService.GetTodo(authorId, id);
@@ -45,6 +46,17 @@ namespace TaskApi.Controllers
             }
 
             return Ok(mappedTodo);
+        }
+
+        [HttpPost]
+        public ActionResult<TodoDto> CreateTodo(int authorId, CreateTodoDto todo)
+        {
+            var todoEntity = _mapper.Map<Todo>(todo);
+            var newTodo = _todoService.AddTodo(authorId, todoEntity);
+
+            var todoForReturn = _mapper.Map<TodoDto>(newTodo);
+
+            return CreatedAtRoute("GetTodo", new { authorId, id = todoForReturn.Id }, todoForReturn);
         }
     }
 }
