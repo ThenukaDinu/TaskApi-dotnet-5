@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaskApi.DataAccess;
 
 namespace TaskApi.DataAccess.Migrations
 {
     [DbContext(typeof(TodoDBContext))]
-    partial class TodoDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210808182403_AuthorEntityAndData")]
+    partial class AuthorEntityAndData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,28 +28,8 @@ namespace TaskApi.DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AddressNo")
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
                     b.Property<string>("FullName")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("JobRole")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<string>("Street")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -57,47 +39,27 @@ namespace TaskApi.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            AddressNo = "45",
-                            City = "Colombo 1",
-                            FullName = "Thenuka Jayarathna",
-                            JobRole = "Developer",
-                            Street = "street 1"
+                            FullName = "Thenuka Jayarathna"
                         },
                         new
                         {
                             Id = 2,
-                            AddressNo = "22",
-                            City = "Colombo 5",
-                            FullName = "Pubudu Gamage",
-                            JobRole = "Systems Engineer",
-                            Street = "street 2"
+                            FullName = "Pubudu Gamage"
                         },
                         new
                         {
                             Id = 3,
-                            AddressNo = "14",
-                            City = "Kandy",
-                            FullName = "Nishadi Hansika",
-                            JobRole = "Developer",
-                            Street = "street 4"
+                            FullName = "Nishadi Hansika"
                         },
                         new
                         {
                             Id = 4,
-                            AddressNo = "55",
-                            City = "Nugegoda",
-                            FullName = "Nipun Gallage",
-                            JobRole = "QA",
-                            Street = "street 5"
+                            FullName = "Nipun Gallage"
                         },
                         new
                         {
                             Id = 5,
-                            AddressNo = "422/1",
-                            City = "Galle",
-                            FullName = "Isuru Anjana",
-                            JobRole = "Developer",
-                            Street = "street 6"
+                            FullName = "Isuru Anjana"
                         });
                 });
 
@@ -120,13 +82,11 @@ namespace TaskApi.DataAccess.Migrations
                     b.Property<DateTime>("Due")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Status")
+                    b.Property<int>("States")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -139,50 +99,50 @@ namespace TaskApi.DataAccess.Migrations
                         {
                             Id = 1,
                             AuthorId = 1,
-                            Created = new DateTime(2021, 8, 13, 23, 39, 25, 16, DateTimeKind.Local).AddTicks(6069),
+                            Created = new DateTime(2021, 8, 8, 23, 54, 2, 994, DateTimeKind.Local).AddTicks(4114),
                             Description = "Get some text books for school",
-                            Due = new DateTime(2021, 8, 18, 23, 39, 25, 17, DateTimeKind.Local).AddTicks(4483),
-                            Status = 0,
+                            Due = new DateTime(2021, 8, 13, 23, 54, 2, 995, DateTimeKind.Local).AddTicks(2209),
+                            States = 0,
                             Title = "Get books for school"
                         },
                         new
                         {
                             Id = 2,
                             AuthorId = 5,
-                            Created = new DateTime(2021, 8, 13, 23, 39, 25, 17, DateTimeKind.Local).AddTicks(5395),
+                            Created = new DateTime(2021, 8, 8, 23, 54, 2, 995, DateTimeKind.Local).AddTicks(3122),
                             Description = "Get some food for next week",
-                            Due = new DateTime(2021, 8, 16, 23, 39, 25, 17, DateTimeKind.Local).AddTicks(5400),
-                            Status = 0,
+                            Due = new DateTime(2021, 8, 11, 23, 54, 2, 995, DateTimeKind.Local).AddTicks(3127),
+                            States = 0,
                             Title = "Shopping for next week"
                         },
                         new
                         {
                             Id = 3,
                             AuthorId = 3,
-                            Created = new DateTime(2021, 8, 13, 23, 39, 25, 17, DateTimeKind.Local).AddTicks(5407),
+                            Created = new DateTime(2021, 8, 8, 23, 54, 2, 995, DateTimeKind.Local).AddTicks(3135),
                             Description = "Practice programming",
-                            Due = new DateTime(2021, 8, 15, 23, 39, 25, 17, DateTimeKind.Local).AddTicks(5409),
-                            Status = 0,
+                            Due = new DateTime(2021, 8, 10, 23, 54, 2, 995, DateTimeKind.Local).AddTicks(3136),
+                            States = 0,
                             Title = "Do some programming practice"
                         },
                         new
                         {
                             Id = 4,
                             AuthorId = 1,
-                            Created = new DateTime(2021, 8, 13, 23, 39, 25, 17, DateTimeKind.Local).AddTicks(5410),
+                            Created = new DateTime(2021, 8, 8, 23, 54, 2, 995, DateTimeKind.Local).AddTicks(3138),
                             Description = "Clean the room",
-                            Due = new DateTime(2021, 8, 18, 23, 39, 25, 17, DateTimeKind.Local).AddTicks(5411),
-                            Status = 0,
+                            Due = new DateTime(2021, 8, 13, 23, 54, 2, 995, DateTimeKind.Local).AddTicks(3139),
+                            States = 0,
                             Title = "Clean room"
                         },
                         new
                         {
                             Id = 5,
                             AuthorId = 4,
-                            Created = new DateTime(2021, 8, 13, 23, 39, 25, 17, DateTimeKind.Local).AddTicks(5413),
+                            Created = new DateTime(2021, 8, 8, 23, 54, 2, 995, DateTimeKind.Local).AddTicks(3140),
                             Description = "Finish daily workout",
-                            Due = new DateTime(2021, 8, 14, 23, 39, 25, 17, DateTimeKind.Local).AddTicks(5414),
-                            Status = 0,
+                            Due = new DateTime(2021, 8, 9, 23, 54, 2, 995, DateTimeKind.Local).AddTicks(3141),
+                            States = 0,
                             Title = "Workout for 30 minutes"
                         });
                 });
@@ -190,17 +150,12 @@ namespace TaskApi.DataAccess.Migrations
             modelBuilder.Entity("TaskApi.Modals.Todo", b =>
                 {
                     b.HasOne("TaskApi.Modals.Author", "Author")
-                        .WithMany("Todos")
+                        .WithMany()
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Author");
-                });
-
-            modelBuilder.Entity("TaskApi.Modals.Author", b =>
-                {
-                    b.Navigation("Todos");
                 });
 #pragma warning restore 612, 618
         }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaskApi.DataAccess;
 
 namespace TaskApi.DataAccess.Migrations
 {
     [DbContext(typeof(TodoDBContext))]
-    partial class TodoDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210811193114_Added data notations")]
+    partial class Addeddatanotations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,11 +42,6 @@ namespace TaskApi.DataAccess.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
-                    b.Property<string>("JobRole")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
                     b.Property<string>("Street")
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
@@ -60,7 +57,6 @@ namespace TaskApi.DataAccess.Migrations
                             AddressNo = "45",
                             City = "Colombo 1",
                             FullName = "Thenuka Jayarathna",
-                            JobRole = "Developer",
                             Street = "street 1"
                         },
                         new
@@ -69,7 +65,6 @@ namespace TaskApi.DataAccess.Migrations
                             AddressNo = "22",
                             City = "Colombo 5",
                             FullName = "Pubudu Gamage",
-                            JobRole = "Systems Engineer",
                             Street = "street 2"
                         },
                         new
@@ -78,7 +73,6 @@ namespace TaskApi.DataAccess.Migrations
                             AddressNo = "14",
                             City = "Kandy",
                             FullName = "Nishadi Hansika",
-                            JobRole = "Developer",
                             Street = "street 4"
                         },
                         new
@@ -87,7 +81,6 @@ namespace TaskApi.DataAccess.Migrations
                             AddressNo = "55",
                             City = "Nugegoda",
                             FullName = "Nipun Gallage",
-                            JobRole = "QA",
                             Street = "street 5"
                         },
                         new
@@ -96,7 +89,6 @@ namespace TaskApi.DataAccess.Migrations
                             AddressNo = "422/1",
                             City = "Galle",
                             FullName = "Isuru Anjana",
-                            JobRole = "Developer",
                             Street = "street 6"
                         });
                 });
@@ -120,7 +112,7 @@ namespace TaskApi.DataAccess.Migrations
                     b.Property<DateTime>("Due")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Status")
+                    b.Property<int>("States")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -139,50 +131,50 @@ namespace TaskApi.DataAccess.Migrations
                         {
                             Id = 1,
                             AuthorId = 1,
-                            Created = new DateTime(2021, 8, 13, 23, 39, 25, 16, DateTimeKind.Local).AddTicks(6069),
+                            Created = new DateTime(2021, 8, 12, 1, 1, 13, 803, DateTimeKind.Local).AddTicks(8261),
                             Description = "Get some text books for school",
-                            Due = new DateTime(2021, 8, 18, 23, 39, 25, 17, DateTimeKind.Local).AddTicks(4483),
-                            Status = 0,
+                            Due = new DateTime(2021, 8, 17, 1, 1, 13, 804, DateTimeKind.Local).AddTicks(7665),
+                            States = 0,
                             Title = "Get books for school"
                         },
                         new
                         {
                             Id = 2,
                             AuthorId = 5,
-                            Created = new DateTime(2021, 8, 13, 23, 39, 25, 17, DateTimeKind.Local).AddTicks(5395),
+                            Created = new DateTime(2021, 8, 12, 1, 1, 13, 804, DateTimeKind.Local).AddTicks(8722),
                             Description = "Get some food for next week",
-                            Due = new DateTime(2021, 8, 16, 23, 39, 25, 17, DateTimeKind.Local).AddTicks(5400),
-                            Status = 0,
+                            Due = new DateTime(2021, 8, 15, 1, 1, 13, 804, DateTimeKind.Local).AddTicks(8732),
+                            States = 0,
                             Title = "Shopping for next week"
                         },
                         new
                         {
                             Id = 3,
                             AuthorId = 3,
-                            Created = new DateTime(2021, 8, 13, 23, 39, 25, 17, DateTimeKind.Local).AddTicks(5407),
+                            Created = new DateTime(2021, 8, 12, 1, 1, 13, 804, DateTimeKind.Local).AddTicks(8741),
                             Description = "Practice programming",
-                            Due = new DateTime(2021, 8, 15, 23, 39, 25, 17, DateTimeKind.Local).AddTicks(5409),
-                            Status = 0,
+                            Due = new DateTime(2021, 8, 14, 1, 1, 13, 804, DateTimeKind.Local).AddTicks(8742),
+                            States = 0,
                             Title = "Do some programming practice"
                         },
                         new
                         {
                             Id = 4,
                             AuthorId = 1,
-                            Created = new DateTime(2021, 8, 13, 23, 39, 25, 17, DateTimeKind.Local).AddTicks(5410),
+                            Created = new DateTime(2021, 8, 12, 1, 1, 13, 804, DateTimeKind.Local).AddTicks(8744),
                             Description = "Clean the room",
-                            Due = new DateTime(2021, 8, 18, 23, 39, 25, 17, DateTimeKind.Local).AddTicks(5411),
-                            Status = 0,
+                            Due = new DateTime(2021, 8, 17, 1, 1, 13, 804, DateTimeKind.Local).AddTicks(8745),
+                            States = 0,
                             Title = "Clean room"
                         },
                         new
                         {
                             Id = 5,
                             AuthorId = 4,
-                            Created = new DateTime(2021, 8, 13, 23, 39, 25, 17, DateTimeKind.Local).AddTicks(5413),
+                            Created = new DateTime(2021, 8, 12, 1, 1, 13, 804, DateTimeKind.Local).AddTicks(8747),
                             Description = "Finish daily workout",
-                            Due = new DateTime(2021, 8, 14, 23, 39, 25, 17, DateTimeKind.Local).AddTicks(5414),
-                            Status = 0,
+                            Due = new DateTime(2021, 8, 13, 1, 1, 13, 804, DateTimeKind.Local).AddTicks(8748),
+                            States = 0,
                             Title = "Workout for 30 minutes"
                         });
                 });
